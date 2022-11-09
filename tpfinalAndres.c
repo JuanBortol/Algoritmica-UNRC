@@ -270,14 +270,13 @@ void Eliminar(char *nombreArch){
 			fseek(f,-1*sizeof(Tregdiario),SEEK_CUR);
 			fwrite(&aux, sizeof(Tregdiario), 1, f);
 			fclose(f);
+			printf("\nEliminación exitosa!");
 			return;
 		}
 	}
 	fclose(f);
 	printf("No hay registros cargados para el dia %li/%li/%li. \n\n",(aux.ddmmyyyy/1000000),((aux.ddmmyyyy/10000)%100),(aux.ddmmyyyy%10000));		
 }
-  
-
 /////////////////////////////////////////////////////////////
 
 
@@ -296,9 +295,12 @@ void Modificar(char *nombreArch){
 			Cargaregistro(&aux);
 			fwrite(&aux, sizeof(Tregdiario), 1, f);
 			fclose(f);
+			printf("La edición se realizó con exito.");
 			return;
 		}
 	}
+	fclose(f);
+	printf("No hay registros cargados para el dia %li/%li/%li. \n\n",(aux.ddmmyyyy/1000000),((aux.ddmmyyyy/10000)%100),(aux.ddmmyyyy%10000));
 }
 /////////////////////////////////////////////////////////////
 
